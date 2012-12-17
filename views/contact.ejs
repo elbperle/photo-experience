@@ -1,0 +1,19 @@
+<% layout('layout') -%>
+<div data-role="content" data-theme="b">
+  <h2><%= title %></h2>
+
+  <p>If you have any questions or suggestions do not hesitate to contact me.</p>
+  
+  <% if (error) { %>
+    <p class="error">Please fill out all form-fields.</p>
+  <% } %>
+  <form action="/emailContact" method="post">
+      <label for="message">Message</label>
+      <textarea name="message" id="message" placeholder="Message"><%= fields.message || "" %></textarea>
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="Name" value="<%= fields.name || "" %>" />
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" placeholder="Email" value="<%= fields.email || "" %>" />
+      <button data-icon="star" type="submit">Contact me!</button>
+  </form>
+</div>

@@ -29,6 +29,10 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/photos', routes.photos);
+app.get('/contact', routes.contact);
+app.post('/emailContact', routes.emailContact);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

@@ -1,6 +1,6 @@
-<nav>
-  <ul>
-    <li>HOME</li>
-    <li>Impressum</li>
-  </ul>
-</nav>
+<div data-role="navbar">
+	<ul>
+		<li><a href="/photos" <% if (activeNavItem == 'photos') { %> class='ui-btn-active ui-state-persist' <% } %>>Photos</a></li>
+		<li><a href="/contact" <% if (activeNavItem == 'contact') { %> class='ui-btn-active ui-state-persist' <% } %>>Contact</a></li>
+	</ul>
+</div>
