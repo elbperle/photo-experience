@@ -1,9 +1,15 @@
 var Step = require("step");
+var path = require('path');
 
 exports.photos = function(req, res){
     tree("./public/images/photos", function(err, directory) {
-        console.log(directory.children);
-        res.render('photos', { title: 'Photos', activeNavItem: "photos", photoTree: directory.children, path: require("path") });
+        res.render('photos', { title: 'Photos', activeNavItem: "photos", photoTree: directory.children, path: path });
+    });
+};
+
+exports.photosDetailView = function(req, res){
+    tree(req.query.path, function(err, directory) {
+        res.render('photosDetailView', { title: getDetailViewTitle(req.query.path), activeNavItem: "photos", photos : directory.children, path: path });
     });
 };
 
@@ -36,8 +42,10 @@ function tree(dir, done) {
   });
 };
 
-function getFiles(path, callback) {
-    fs.readdir(path, callback);
+function getDetailViewTitle(dirPath) {
+    // TODO: instead of split-string use path.sep in node.js > 0.8
+    var pathArr = path.relative('public/images/photos', dirPath).split('/');
+    return pathArr.join(' &gt; ')
 }
 
 function stripDotFiles(files) {

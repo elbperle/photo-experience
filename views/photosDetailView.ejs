@@ -1,0 +1,7 @@
+<% layout('layout') -%>
+<div data-role="content" data-theme="c">
+  <h2><%= title %></h2>
+<% photos.forEach(function(element) { -%>
+  <img src="<%= path.relative('public', element.path) %>">
+<% }) -%>
+</div>

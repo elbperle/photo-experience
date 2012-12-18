@@ -10,7 +10,7 @@
     <ul data-role="listview">
       <% element.children.forEach(function(element) { -%> 
         <li>
-          <a href="/showAlbum?path=<%= encodeURIComponent(path.relative('public' , element.children[0].path)) %>">
+          <a href="/photosDetailView?path=<%= encodeURIComponent(element.path) %>">
             <img src="<%= path.relative('public' , element.children[0].path) %>"/>
             <h3><%= path.basename(element.path) %></h3>
             <p>view this</p>
@@ -24,11 +24,3 @@
     });
   -%>
 </div>
-
-<!-- [ { path: './public/images/photos/.DS_Store' },
-  { path: './public/images/photos/Portraits',
-    children: [],
-    isDirectory: true },
-  { path: './public/images/photos/Dänemark',
-    children: [ [Object], [Object], [Object] ],
-    isDirectory: true } ] -->

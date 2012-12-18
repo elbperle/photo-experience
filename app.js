@@ -32,6 +32,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/photos', photoRoutes.photos);
+app.get('/photosDetailView', photoRoutes.photosDetailView);
 app.get('/contact', routes.contact);
 app.post('/emailContact', routes.emailContact);
 
