@@ -9,6 +9,7 @@
     "express": "3.0.4",
     "ejs": "*",
     "ejs-locals": "1.0.0",
-    "nodemailer": "0.3.37"
+    "nodemailer": "0.3.37",
+    "step":"0.0.5"
   }
 }
