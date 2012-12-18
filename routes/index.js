@@ -4,10 +4,6 @@ exports.index = function(req, res){
   res.render('index', { title: 'Home', activeNavItem: "index" });
 };
 
-exports.photos = function(req, res){
-  res.render('photos', { title: 'Photos', activeNavItem: "photos" });
-};
-
 exports.contact = function(req, res){
   res.render('contact', { title: 'Contact me', activeNavItem: "contact", error: false, fields: {} });
 };

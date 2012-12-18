@@ -6,8 +6,10 @@
 var express = require('express')
   , engine = require('ejs-locals')
   , routes = require('./routes')
+  , photoRoutes = require('./routes/photos')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+    fs = require('fs');
 
 var app = express();
 
@@ -29,7 +31,7 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/photos', routes.photos);
+app.get('/photos', photoRoutes.photos);
 app.get('/contact', routes.contact);
 app.post('/emailContact', routes.emailContact);
 
