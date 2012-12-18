@@ -1,3 +1,8 @@
 .error {
     color: red;
 }
+
+.ui-li .ui-btn-inner a.ui-link-inherit {
+    padding-top: 0;
+    padding-bottom: 0;
+}
