@@ -1,6 +1,14 @@
 <% layout('layout') -%>
 <div data-role="content" data-theme="c">
-  <h2><%= title %></h2>
+  <ol class="breadcrumb">
+  <% 
+   breadcrumb.forEach(function(element)  { 
+  -%>
+    <li><a href="<%= element.path %>" data-role="none"><%= element.name %></a></li>
+  <%    
+    })
+  -%>
+  </ol>
 <% photos.forEach(function(element) { -%>
   <img src="<%= path.relative('public', element.path) %>">
 <% }) -%>

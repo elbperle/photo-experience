@@ -1,5 +1,6 @@
-var Step = require("step");
-var path = require('path');
+var Step = require("step"),
+    path = require("path"),
+    fs   = require("fs");
 
 exports.photos = function(req, res){
     tree("./public/images/photos", function(err, directory) {
@@ -9,7 +10,7 @@ exports.photos = function(req, res){
 
 exports.photosDetailView = function(req, res){
     tree(req.query.path, function(err, directory) {
-        res.render('photosDetailView', { title: getDetailViewTitle(req.query.path), activeNavItem: "photos", photos : directory.children, path: path });
+        res.render('photosDetailView', { title: "Photos", breadcrumb: getBreadcrumb(req.query.path), activeNavItem: "photos", photos : directory.children, path: path });
     });
 };
 
@@ -42,10 +43,24 @@ function tree(dir, done) {
   });
 };
 
-function getDetailViewTitle(dirPath) {
+function getBreadcrumb(dirPath) {
+    var basePath = 'public/images/photos';
     // TODO: instead of split-string use path.sep in node.js > 0.8
-    var pathArr = path.relative('public/images/photos', dirPath).split('/');
-    return pathArr.join(' &gt; ')
+    
+    var breadcrumbArr = [];    
+    var pathArr = path.relative(basePath, dirPath).split('/');
+    
+    for (var i=0; i<pathArr.length; i++){
+        var breadcrumbObj = { name : pathArr[i] };
+        if (i === pathArr.length-1) {
+            breadcrumbObj.path = '/photosDetailView?path=' + dirPath; 
+        } else {
+            breadcrumbObj.path = '/photos?path=' + pathArr[i];
+        }
+        breadcrumbArr.push(breadcrumbObj);
+    }
+    
+    return breadcrumbArr;
 }
 
 function stripDotFiles(files) {

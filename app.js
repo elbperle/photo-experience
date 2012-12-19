@@ -3,14 +3,14 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , engine = require('ejs-locals')
-  , routes = require('./routes')
-  , photoRoutes = require('./routes/photos')
-  , http = require('http')
-  , path = require('path')
+var express = require('express'),
+    engine = require('ejs-locals'),
+    routes = require('./routes'),
+    photoRoutes = require('./routes/photos'),
+    http = require('http'),
+    path = require('path'),
     fs = require('fs');
-
+    
 var app = express();
 
 app.configure(function(){

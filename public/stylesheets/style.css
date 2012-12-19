@@ -6,3 +6,38 @@
     padding-top: 0;
     padding-bottom: 0;
 }
+
+.breadcrumb {
+    padding: 0;
+}
+
+.breadcrumb li {
+    font-size: 1.5em;
+    display: inline-block;
+    padding-right: 28px;
+    position: relative;
+}
+
+.breadcrumb li:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 6px;
+    border: 8px solid transparent;
+    border-left: 8px solid #ccc;
+}
+
+.breadcrumb li:last-child:after {
+    display: none;
+}
+
+.breadcrumb li:last-child {
+    font-weight: bold;
+}
+
+.breadcrumb a {
+    color: #000;
+    text-decoration: none;
+}
