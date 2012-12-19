@@ -10,7 +10,9 @@
     "ejs": "*",
     "ejs-locals": "1.0.0",
     "nodemailer": "0.3.37",
-    // Use forked step since original step has issues with group() handling as explained here https://github.com/creationix/step/issues/26
     "step": "git://github.com/raffecat/step.git"
+  },
+  "devDependencies": {
+      "qunit": "*"
   }
 }
