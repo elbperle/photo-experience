@@ -4,7 +4,7 @@ var Step = require("step"),
 
 exports.photos = function(req, res){
     tree("./public/images/photos", function(err, directory) {
-        res.render('photos', { title: 'Photos', activeNavItem: "photos", photoTree: directory.children, path: path });
+        res.render('photos', { title: 'Photos', activeNavItem: "photos", activeCategory: req.query.category, photoTree: directory.children, path: path });
     });
 };
 
@@ -53,9 +53,9 @@ function getBreadcrumb(dirPath) {
     for (var i=0; i<pathArr.length; i++){
         var breadcrumbObj = { name : pathArr[i] };
         if (i === pathArr.length-1) {
-            breadcrumbObj.path = '/photosDetailView?path=' + dirPath; 
+            breadcrumbObj.path = '/photosDetailView?path=' + encodeURIComponent(dirPath); 
         } else {
-            breadcrumbObj.path = '/photos?path=' + pathArr[i];
+            breadcrumbObj.path = '/photos?category=' + encodeURIComponent(pathArr[i]);
         }
         breadcrumbArr.push(breadcrumbObj);
     }

@@ -1,24 +1,25 @@
 <% layout('layout') -%>
 <div data-role="content" data-theme="c">
   <h2><%= title %></h2>
-  <%  
+  <%      
     photoTree.forEach(function(element) { 
-      if (element.isDirectory && element.children.length) {    
+      if (element.isDirectory && element.children.length) {
+        var categoryName = path.basename(element.path);    
   -%>
-  <div data-role="collapsible" data-theme="a" data-content-theme="b">
-    <h3><%= path.basename(element.path) %></h3>
-    <ul data-role="listview">
-      <% element.children.forEach(function(element) { -%> 
-        <li>
-          <a href="/photosDetailView?path=<%= encodeURIComponent(element.path) %>">
-            <img src="<%= path.relative('public' , element.children[0].path) %>"/>
-            <h3><%= path.basename(element.path) %></h3>
-            <p>view this</p>
-          </a>
-        </li>
-      <% }) -%>
-    </ul> 
-  </div>
+        <div data-role="collapsible" data-theme="a" data-content-theme="b" <% if (activeCategory === categoryName) { %>data-collapsed="false"<% } %>>
+          <h3><%= categoryName %></h3>
+          <ul data-role="listview">
+            <% element.children.forEach(function(element) { -%> 
+              <li>
+                <a href="/photosDetailView?path=<%= encodeURIComponent(element.path) %>">
+                  <img src="<%= path.relative('public' , element.children[0].path) %>"/>
+                  <h3><%= path.basename(element.path) %></h3>
+                  <p>view this</p>
+                </a>
+              </li>
+            <% }) -%>
+          </ul> 
+        </div>
   <% 
       }
     });
